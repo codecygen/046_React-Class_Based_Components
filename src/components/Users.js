@@ -11,6 +11,7 @@ import classes from './Users.module.css';
 // ];
 
 // React-propsEquivalent-Javascript_Class_Inheritence-Class_Based_Components
+// Component is imported
 class Users extends Component {
   // React-stateEquivalent-Class_Based_Components
   // The constructor method section manages initializing the state.

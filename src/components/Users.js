@@ -30,6 +30,14 @@ class Users extends Component {
     };
   }
 
+  // React-useEffect_Equivalent-Class_Based_Components
+  // React-Error_Boundaries-Class_Based_Components
+  componentDidUpdate() {
+    if(this.props.users.length === 0) {
+      throw new Error('No users provided!');
+    }
+  }
+
   // React-stateEquivalent-Class_Based_Components
   // The toggleUsersHandler is the method that is called by "onClick" method in
   // the <button></button> tag. 

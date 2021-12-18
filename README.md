@@ -21,3 +21,15 @@ componentDidUpdate() =======> Called once the component is updated. (evaluated &
 componentWillUnmount() =======> Called right before the component is unmounted. (removed from DOM) =======> Equivalent to CLEANUP function =======> useEffect(() => { return() => {...}}, [])
 
 - React-ContextAPI_Equivalent-Class_Based_Components
+
+This works with only one context per component for in class based compoenents
+
+- React-Error_Boundaries-Class_Based_Components
+
+Error Boundary is used to prevent app to crash when it throws an error. So you handle the error in a more elegant way.
+
+componentDidCatch method can be added to any class based component and when it is added, it turns the class into Error Boundary.
+
+You can wrap around more than 1 component for Error Boundaries.
+
+Here in this example, we create ErrorBoundary.js, inside "UserFinder" component, we wrap "Users" component with "ErrorBoundary", then inside "Users" component we put the "componentDidUpdate" method to catch the error. In this scenario, we throw an error when the filter result cannot find anything. The result will be show on console as "Uncaught Error: No users provided!" but app will not crash and show a paragraph writing "Something went wrong!".

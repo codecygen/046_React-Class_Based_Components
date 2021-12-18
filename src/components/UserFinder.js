@@ -1,18 +1,21 @@
 // React-propsEquivalent-Javascript_Class_Inheritence-Class_Based_Components
 import { Fragment, Component } from 'react';
 
+// React-Error_Boundaries-Class_Based_Components
+import ErrorBoundary from './ErrorBoundary';
+
 import Users from './Users';
 import classes from './UserFinder.module.css';
-
-const DUMMY_USERS = [
-    { id: 'u1', name: 'Max' },
-    { id: 'u2', name: 'Manuel' },
-    { id: 'u3', name: 'Julie' },
-];
+// React-ContextAPI_Equivalent-Class_Based_Components
+import UsersContext from '../store/users-context';
 
 // React-propsEquivalent-Javascript_Class_Inheritence-Class_Based_Components
 // Component is imported
 class UserFinder extends Component {
+    // React-ContextAPI_Equivalent-Class_Based_Components
+    static contextType = UsersContext;
+
+
     // React-stateEquivalent-Class_Based_Components
     // The constructor method section manages initializing the state.
     constructor() {
@@ -31,14 +34,16 @@ class UserFinder extends Component {
     // React-useEffect_Equivalent-Class_Based_Components
     componentDidMount() {
         // Send http request...
-        this.setState({ filteredUsers: DUMMY_USERS });
+        // React-ContextAPI_Equivalent-Class_Based_Components
+        this.setState({ filteredUsers: this.context.users });
     }
 
     // React-useEffect_Equivalent-Class_Based_Components
     componentDidUpdate(prevProps, prevState) {
         if (prevState.searchTerm !== this.state.searchTerm) {
             this.setState({
-                filteredUsers: DUMMY_USERS.filter((user) =>
+                // React-ContextAPI_Equivalent-Class_Based_Components
+                filteredUsers: this.context.users.filter((user) =>
                     user.name.includes(this.state.searchTerm)
                 ),
             });
@@ -63,8 +68,11 @@ class UserFinder extends Component {
                     {/* Check out bind method to know more about this section */}
                     <input type='search' onChange={this.searchChangeHandler.bind(this)} />
                 </div>
-                {/* React-stateEquivalent-Class_Based_Components  */}
-                <Users users={this.state.filteredUsers} />
+                {/* React-Error_Boundaries-Class_Based_Components */}
+                <ErrorBoundary>
+                    {/* React-stateEquivalent-Class_Based_Components  */}
+                    <Users users={this.state.filteredUsers} />
+                </ErrorBoundary>
             </Fragment>
         );
     }

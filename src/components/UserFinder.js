@@ -28,11 +28,13 @@ class UserFinder extends Component {
         };
     }
 
+    // React-useEffect_Equivalent-Class_Based_Components
     componentDidMount() {
         // Send http request...
         this.setState({ filteredUsers: DUMMY_USERS });
     }
 
+    // React-useEffect_Equivalent-Class_Based_Components
     componentDidUpdate(prevProps, prevState) {
         if (prevState.searchTerm !== this.state.searchTerm) {
             this.setState({
@@ -43,16 +45,25 @@ class UserFinder extends Component {
         }
     }
 
+    // React-stateEquivalent-Class_Based_Components
+    // The searchChangeHandler is the method that is called by "onChange" method in
+    // the <input/> tag.
     searchChangeHandler(event) {
         this.setState({ searchTerm: event.target.value });
     }
 
+    // React-returnEquivalent-Class_Based_Components
+    // render method is the equivalent of return
+    // in Class Based Components
     render() {
         return (
             <Fragment>
                 <div className={classes.finder}>
+                    {/* React-stateEquivalent-Class_Based_Components  */}
+                    {/* Check out bind method to know more about this section */}
                     <input type='search' onChange={this.searchChangeHandler.bind(this)} />
                 </div>
+                {/* React-stateEquivalent-Class_Based_Components  */}
                 <Users users={this.state.filteredUsers} />
             </Fragment>
         );

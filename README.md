@@ -19,3 +19,5 @@ componentDidMount() =======> Called once the component is mounted. (evaluated & 
 componentDidUpdate() =======> Called once the component is updated. (evaluated & rendered) =======> Equivalent to =======> useEffect(..., [someValue])
 
 componentWillUnmount() =======> Called right before the component is unmounted. (removed from DOM) =======> Equivalent to CLEANUP function =======> useEffect(() => { return() => {...}}, [])
+
+- React-ContextAPI_Equivalent-Class_Based_Components
